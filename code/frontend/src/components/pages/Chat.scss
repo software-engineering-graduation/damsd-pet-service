@@ -1,0 +1,211 @@
+.MuiBox-root.css-b95f0i {
+  overflow: hidden;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.chat-container {
+  display: flex;
+  height: 100%;
+  font-family: Arial, sans-serif;
+
+  .chat-sidebar {
+    width: 350px;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .chats {
+      flex-grow: 1;
+      background-color: white;
+
+      .chat-preview {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #eaeaea;
+        }
+
+        .chat-avatar {
+          margin-right: 10px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: #f0f0f0;
+          font-size: 20px;
+          flex-shrink: 0;
+
+          svg {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+
+            &[data-testid="PersonIcon"] {
+              path {
+                transform: scale(1.5) translate(-4px, -4px);
+              }
+            }
+          }
+
+          .avatar-icon {
+            font-size: 2rem;
+          }
+        }
+
+        .chat-info {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          overflow: hidden;
+
+          p {
+            margin: 0;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+          }
+
+          span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            color: #888;
+          }
+        }
+
+        .time {
+          color: #888;
+        }
+      }
+    }
+  }
+
+  .chat-placeholder {
+    margin: auto;
+  }
+
+  .chat-window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .chat-header {
+      display: flex; // Usar flexbox para alinhar os itens
+      align-items: center; // Centralizar os itens verticalmente
+      justify-content: space-between; // Distribuir espaço entre os itens
+      padding: 15px; // Espaçamento interno
+      background-color: #fff; // Cor de fundo
+      border-bottom: 1px solid #ddd; // Linha de separação
+
+      h2 {
+        margin: 0; // Remover margens
+        font-size: 20px; // Ajustar o tamanho da fonte conforme necessário
+        width: 100%;
+        overflow: hidden; // Esconder texto que não couber
+        text-overflow: ellipsis; // Adicionar "..." se o texto for muito longo
+        white-space: nowrap; // Impedir que o texto quebre em várias linhas
+      }
+      .MuiIconButton-root {
+        margin-left: auto; // Empurrar o ícone de engrenagem para a direita
+      }
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      background-color: #f9f9f9;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+
+      .message {
+        padding: 5px 10px;
+        margin: 3px 0;
+        border-radius: 10px;
+        max-width: 75%;
+        display: inline-block;
+        word-wrap: break-word;
+
+        &.other {
+          background-color: #e0e0e0;
+          align-self: flex-start;
+        }
+
+        &.user {
+          background-color: #4a90e2;
+          color: #fff;
+          align-self: flex-end;
+        }
+
+        &.canceled, &.declined {
+          background-color: gray;
+          color: black;
+        }
+
+        &.accepted {
+          background-color: green;
+          color: white;
+        }
+      }
+    }
+
+    .chat-input {
+      padding: 15px 10px;
+      display: flex;
+      background-color: #fff;
+      border-top: 1px solid #ddd;
+      position: relative;
+
+      .input-buttons {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+
+        button {
+          margin-right: 5px; /* Espaço entre os botões */
+        }
+      }
+
+      .MuiIconButton-root {
+        padding: 8px; // Aumentar a área clicável
+      }
+
+      .mic-button {
+        padding: 8px; // Ajustar o espaço ao redor do ícone
+      }
+
+      .send-btn {
+        padding: 10px 20px;
+        background-color: #4a90e2;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+      }
+
+      .form-group {
+        margin-bottom: 0;
+        flex-grow: 1;
+      }
+    }
+  }
+}

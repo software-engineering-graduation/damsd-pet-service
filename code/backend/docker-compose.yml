@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  api:
+    image: petservice.azurecr.io/api:latest
+    container_name: api
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRATION=${JWT_EXPIRATION}
+      - DB_URL=${DB_URL}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USERNAME=${RABBITMQ_USERNAME}
+      - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}
+      - RABBITMQ_VIRTUAL_HOST=${RABBITMQ_VIRTUAL_HOST}
+    depends_on:
+      - rabbitmq
+    env_file:
+      - ./.env
+    networks:
+      - pet_service_network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USERNAME}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+      - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_VIRTUAL_HOST}
+    env_file:
+      - ./.env
+    networks:
+      - pet_service_network
+
+networks:
+  pet_service_network:
+    driver: bridge

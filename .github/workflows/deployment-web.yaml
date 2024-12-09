@@ -1,0 +1,41 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploying to Netlify
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x, 22.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Netlify
+        run: npm install netlify-cli@17.10.1 -g
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./code/frontend
+
+      - name: Build the project
+        run: npm run build
+        working-directory: ./code/frontend
+
+      - name: Deploy to Netlify
+        id: netlify_deploy
+        run: |
+          netlify deploy \
+            --dir dist \
+            --site ${{ secrets.NETLIFY_SITE_ID }} \
+            --auth ${{ secrets.NETLIFY_TOKEN_SECRET }}

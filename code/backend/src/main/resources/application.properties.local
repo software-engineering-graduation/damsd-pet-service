@@ -1,0 +1,27 @@
+# Spring
+spring.application.name=backend-petservice
+server.error.include-exception=false
+# Spring security
+jwt.secret=dee7d3c0ed0c9229d45989fb19499e119bf96b3e3051b5f4036cbb6aef662e62
+jwt.expiration=3600000
+# Banco de dados
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://dpg-csseqj8gph6c739574m0-a.ohio-postgres.render.com/petservice_q3fw
+spring.datasource.name=petservice
+spring.datasource.username=petservice_q3fw_user
+spring.datasource.password=bXc54L99iZHAFiQ5PqUPuXCYBSObCebV
+spring.sql.init.mode=always
+# Jpa
+spring.jpa.open-in-view=false
+spring.jpa.properties.hibernate.format_sql=false
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+springdoc.swagger-ui.path=/swagger-ui.html
+#
+spring.rabbitmq.host=jackal.rmq.cloudamqp.com
+spring.rabbitmq.port=5671
+spring.rabbitmq.username=szqfjsrl
+spring.rabbitmq.password=p1XY_Ggidfcm_r-LgJ-4AlvrUKQrOb-m
+spring.rabbitmq.virtual-host=szqfjsrl
+spring.rabbitmq.ssl.enabled=true
+spring.rabbitmq.template.exchange=chat_exchange
