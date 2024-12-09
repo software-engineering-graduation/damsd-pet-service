@@ -36,7 +36,7 @@ const ListPet = ({ user }) => {
     };
 
     fetchPets().then((r) => console.log("Pets listados:", r));
-  }, [index]);
+  }, [index, user.id]);
 
   if (loading) {
     return (

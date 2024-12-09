@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import DashboardLayout from '../templates/DashboardLayout';
-import Button from '../atoms/Button';
-import LoadingSpinner from '../atoms/LoadingSpinner';
-import ErrorMessage from '../atoms/ErrorMessage';
-import EstablishmentCard from '../molecules/EstablishmentCard';
-import authService from '../../services/authService';
 import './EstablishmentGrade.scss';
 
 

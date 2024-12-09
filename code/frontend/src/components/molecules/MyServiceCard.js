@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Rating, Box, Tooltip } from '@mui/material';
+import { Card, CardContent, Typography, Box, Tooltip } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
 const MyServiceCard = ({ service, onEdit }) => (

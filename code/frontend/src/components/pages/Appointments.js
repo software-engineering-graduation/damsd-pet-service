@@ -15,7 +15,7 @@ const Appointments = ({user}) => {
     const [index, setIndex] = useState(0);
     const itemsPerPage = 4;
 
-    const [showForm, setShowForm] = useState(false);
+    const showForm = false;
 
     useEffect(() => {
         const fetchServices = async () => {

@@ -28,14 +28,6 @@ const ChatWindow = ({ messages, onSendMessage, user, isLoadingMessages, onOpenSc
         return `Agendamento ${status}: ${serviceName} para ${petName} em ${date} às ${time}.`;
     }
 
-    const formatMessageToUpdate = (combo, text, senderId, receiverId) => {
-        return {
-            combo_id: combo,
-            message: text,
-            sender_id: senderId,
-            receiver_id: receiverId
-        }
-    }
     const handleAction = async (action, data, message) => {
         try {
             switch (action) {
@@ -56,10 +48,6 @@ const ChatWindow = ({ messages, onSendMessage, user, isLoadingMessages, onOpenSc
                     aMsg.status = 'accepted';
                     aMsg.appointment_id = acceptResponse.id;
                     message.msg = JSON.stringify(aMsg);
-
-                    const acceptedMessage = formatMessageToUpdate(message.combo, message.msg, message.sender_id, message.receiver_id);
-
-                    const resp = await authService.updateMessage(message.id, acceptedMessage);
 
                     const confirmationMessage = formatActionResponseMessage(
                         'confirmado',
@@ -82,9 +70,6 @@ const ChatWindow = ({ messages, onSendMessage, user, isLoadingMessages, onOpenSc
                     dMsg.status = 'declined';
                     message.msg = JSON.stringify(dMsg);
 
-                    const declinedMessage = formatMessageToUpdate(message.combo, message.msg, message.sender_id, message.receiver_id);
-
-                    const declineResponse = await authService.updateMessage(message.id, declinedMessage);
                     const d_date_time = formatDate(data.date, data.time).split(' ');
                     const refusalMessage = formatActionResponseMessage(
                         'recusado',
@@ -101,9 +86,6 @@ const ChatWindow = ({ messages, onSendMessage, user, isLoadingMessages, onOpenSc
                     cMsg.status = 'canceled';
                     message.msg = JSON.stringify(cMsg);
 
-                    const canceledMessage = formatMessageToUpdate(message.combo, message.msg, message.sender_id, message.receiver_id);
-
-                    const cancelResponse = await authService.updateMessage(message.id, canceledMessage);
                     const c_date_time = formatDate(data.date, data.time).split(' ');
                     const cancelationMessage = formatActionResponseMessage(
                         'cancelado',
@@ -139,7 +121,7 @@ const ChatWindow = ({ messages, onSendMessage, user, isLoadingMessages, onOpenSc
                             <MessageBubble
                                 key={message.id}
                                 text={message.msg}
-                                type={message.sender_id == user.id
+                                type={message?.sender_id?.toString() === user?.id.toString()
                                     ? 'user'
                                     : 'other'
                                 }

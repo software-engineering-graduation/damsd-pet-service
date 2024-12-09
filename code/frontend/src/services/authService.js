@@ -332,7 +332,7 @@ const getAllMessages = async (combo) => {
             id: id,
             combo: combo,
             sender_id: sender_id,
-            receiver_id: partnersId[0] == sender_id
+            receiver_id: partnersId[0]?.toString() === sender_id?.toString()
                 ? partnersId[1]
                 : partnersId[0],
             msg: msg
@@ -492,8 +492,6 @@ const acceptAppointment = async (appointmentData) => {
             throw new Error('Erro ao aceitar o agendamento');
         }
 
-        const appointmentId = response.data.id;
-        
         return response.data;
     } catch (error) {
         console.error('Erro ao aceitar agendamento:', error.message);
